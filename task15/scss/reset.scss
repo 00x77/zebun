@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: HiraginoSansGB,"Microsoft YaHei",Arial;
+}
+
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,form {
+    margin:0;
+}
+
+ul,ol {
+    padding-left: 0;
+    list-style: none;
+}
+
+button {
+    border: 0;
+    outline: none;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+img {
+    display: block;
+}

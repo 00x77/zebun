@@ -1,0 +1,25 @@
+.name:hover > input[type=button],
+.name:focus > input[type=button],
+.name:active > input[type=button] {
+  background-color: #f9a372;
+}
+
+.name > label > a:active,
+.name > label > a:hover {
+  color: #ff650e;
+}
+
+@media (max-width: 770px) {
+  .panel-left {
+    width: 100%;
+  }
+  .panel-right {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 1250px) {
+  .media-body {
+    display: table-cell;
+  }
+}
