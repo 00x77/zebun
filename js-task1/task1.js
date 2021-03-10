@@ -19,7 +19,7 @@ function begin(one, two, three) {
         list[two].style.backgroundColor = "rgb" + colors();
         list[three].style.backgroundColor = "rgb" + colors();
     }
-}
+}  //随机选择三个方块
 
 function colors() {
     var rgb;
@@ -28,7 +28,7 @@ function colors() {
     var b = Math.floor(Math.random() * 256);
     rgb = "(" + r + "," + g + "," + b + ")";
     return rgb;
-}
+}  //生成一个随机颜色
 
 function run() {
     clearInterval(time);
@@ -41,11 +41,11 @@ function run() {
         var three = Math.floor(Math.random() * list.length);
         begin(one, two, three);
     },1000);
-}
+}  //按钮点击执行颜色更改
 
 function stop() {
     clearInterval(time);
     for (var i = 0; i < list.length; i++) {
         list[i].style.backgroundColor = "orange";
     }
-}
+}  //按钮点击停止颜色更改

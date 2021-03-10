@@ -31,14 +31,15 @@ body {
 
 .T-button,
 .B-button {
+    position: relative;
     width: 100%;
-    font-size: 1.6rem;
-    line-height: 3rem;
     margin-bottom: 1rem;
     border: 0.1rem solid orange;
+    outline: none;
+    font-size: 1.6rem;
+    line-height: 3rem;
     background-color: transparent;
     color: orange;
-    outline: none;
 }
 
 button:hover,
