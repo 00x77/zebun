@@ -1,0 +1,49 @@
+html {
+    font: 62.5%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.case {
+    overflow: hidden;
+    padding: 1%
+}
+
+.box {
+    width: 31.33333333%;
+    padding-bottom: 31.33333333%;
+    margin: 1%;
+    border-radius: 10%;
+    float: left;
+    background-color: orange;
+}
+
+.btn-group {
+    padding: 0 1rem;
+    margin-top: 2rem;
+}
+
+.T-button,
+.B-button {
+    width: 100%;
+    font-size: 1.6rem;
+    line-height: 3rem;
+    margin-bottom: 1rem;
+    border: 0.1rem solid orange;
+    background-color: transparent;
+    color: orange;
+    outline: none;
+}
+
+button:hover,
+button:active,
+button:focus {
+    background-color: orange;
+    color: #fff;
+}
