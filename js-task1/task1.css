@@ -21,7 +21,7 @@ body {
     margin: 1%;
     border-radius: 10%;
     float: left;
-    background-color: orange;
+    background-color: #ffa500;
 }
 
 .btn-group {
@@ -34,17 +34,17 @@ body {
     position: relative;
     width: 100%;
     margin-bottom: 1rem;
-    border: 0.1rem solid orange;
+    border: 0.1rem solid #ffa500;
     outline: none;
     font-size: 1.6rem;
     line-height: 3rem;
     background-color: transparent;
-    color: orange;
+    color: #ffa500;
 }
 
 button:hover,
 button:active,
 button:focus {
-    background-color: orange;
+    background-color: #ffa500;
     color: #fff;
 }
