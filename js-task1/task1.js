@@ -24,38 +24,30 @@ function colors() {
     }
 }
 
-function begin(one, two, three) {
-    if (one == two || two == three || one == three) {
-        if (one == two) {                                   //如果有重复的格子，则给一个新的值
-            one = Math.floor(Math.random() * list.length);
-        }
-        else if (two == three) {
-            two = Math.floor(Math.random() * list.length);
-        }
-        else if (one == three) {
-            three = Math.floor(Math.random() * list.length);
-        }
-        begin(one, two, three);                             //重复过程，直到没有重复值
-    }
-    else {
-        var color = colors();
-        list[one].style.backgroundColor = "rgb" + color[0];  //给三个格子赋颜色
-        list[two].style.backgroundColor = "rgb" + color[1];
-        list[three].style.backgroundColor = "rgb" + color[2];
-    }
+function Num() {
+    var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    var result = [];
+    for (var i = 0; i < 3; i++) {
+        var ran = Math.floor(Math.random() * (arr.length - i));
+        result.push(arr[ran]);
+        arr[ran] = arr[arr.length - i - 1];
+    };
+    return result;
 }
 
 function run() {
     clearInterval(time);                                 //停止计时事件
-    time = setInterval(function () {                     
+    time = setInterval(function () {
         for (var i = 0; i < list.length; i++) {          //给九宫格重置颜色
             list[i].style.backgroundColor = "#ffa500";
-        }
-        var one = Math.floor(Math.random() * list.length);//随机选择三个格子
-        var two = Math.floor(Math.random() * list.length);
-        var three = Math.floor(Math.random() * list.length);
-        begin(one, two, three);                          //去重
+        };
+        var Nums = Num();
+        var color = colors();
+        list[Nums[0]].style.backgroundColor = "rgb" + color[0];  //给三个格子赋颜色
+        list[Nums[1]].style.backgroundColor = "rgb" + color[1];
+        list[Nums[2]].style.backgroundColor = "rgb" + color[2];
     }, 1000);
+    document.getElementById("run").disabled = true;
 }
 
 function stop() {
@@ -63,4 +55,5 @@ function stop() {
     for (var i = 0; i < list.length; i++) {               //给九宫格重置颜色
         list[i].style.backgroundColor = "#ffa500";
     }
+    document.getElementById("run").disabled = false;
 }
