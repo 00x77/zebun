@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参数设置</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="../css/new.css">
+</head>
+
+<body class="bgc-f0">
+
+    <header>
+        <div class="nav-bar">
+            <a type="button" onclick="back()" class="u1-5"></a>
+            <p class="ft-17 ls-01">参数设置</p>
+            <a class="u1-3 rel l-04"></a>
+        </div>
+    </header>
+
+    <main class="pt-10">
+
+        <div class="w-340 center-block mb-05">
+            <div class="rel f-l w-60 h-225 bdr-01 bdc-d9 bgc-white">
+                <p class="abs-center-block ft-17 lh-17">玩<br>家<br>配<br>比</p>
+            </div>
+            <div class="ml-60 h-225 bgc-fb">
+                <div class="dis-f wrap bdb-01 bdc-d9" style="height: 19.5rem;">
+                    <p class="dis-f align-center w-50p ft-13 c-a1 mt-15 mb-10">
+                        <label class="dis-ib w-05 h-05 mr-12 ml-17 bgc-fa"></label>
+                        <span class="dis-ib w-40 h-17 text-justify">杀手</span>&nbsp;&nbsp;
+                        <span id="heatman">0</span>&nbsp;&nbsp;人
+                    </p>
+                    <p class="dis-f align-center w-50p ft-13 c-a1 mt-15 mb-10">
+                        <label class="dis-ib w-05 h-05 mr-12 ml-17 bgc-ee"></label>
+                        <span class="dis-ib w-40 h-17 text-justify">警察</span>&nbsp;&nbsp;
+                        <span id="police">0</span>&nbsp;&nbsp;人
+                    </p>
+                    <p class="dis-f align-center w-50p ft-13 c-a1 mt-10 mb-10">
+                        <label class="dis-ib w-05 h-05 mr-12 ml-17 bgc-29"></label>
+                        <span class="dis-ib w-40 h-17 text-justify">狙击手</span>&nbsp;&nbsp;
+                        <span id="sniper">0</span>&nbsp;&nbsp;人
+                    </p>
+                    <p class="dis-f align-center w-50p ft-13 c-a1 mt-10 mb-10">
+                        <label class="dis-ib w-05 h-05 mr-12 ml-17 bgc-29"></label>
+                        <span class="dis-ib w-40 h-17 text-justify">医生</span>&nbsp;&nbsp;
+                        <span id="doctor">0</span>&nbsp;&nbsp;人
+                    </p>
+                    <p class="dis-f align-center w-50p ft-13 c-a1 mt-10 mb-10">
+                        <label class="dis-ib w-05 h-05 mr-12 ml-17 bgc-ee"></label>
+                        <span class="dis-ib w-40 h-17 text-justify">平民</span>&nbsp;&nbsp;
+                        <span id="civilian">0</span>&nbsp;&nbsp;人
+                    </p>
+                </div>
+                <button class="dis-f align-center w-100p bgc-white h-29" onclick="ENum()">
+                    <p class="dis-f align-end w-90 center-block ft-14 lh-14 c-29">点击设置&nbsp;&nbsp;<span class="dis-ib pencil"></span></p>
+                </button>
+            </div>
+        </div>
+
+        <div class="w-340 center-block bgc-white pt-05 pl-15 pr-15 pb-15 mb-05">
+            <input id="firstText" class="w-100p h-40 mb-05 bdb-01 bdc-f0 bdc-f0 inputin" type="text" placeholder="水民词组" maxlength="5">
+            <input id="secondText" class="w-100p h-40 bdb-01 bdc-f0 bdc-f0 inputin" type="text" placeholder="幽灵词组" maxlength="5">
+        </div>
+
+        <div class="rel w-340 center-block bgc-white pt-10 pr-15 pl-15 pb-30">
+            <p class="ft-14 lh-20 ls-01">玩家人数&nbsp;&nbsp;&nbsp;
+                <input type="text" id="p-num" onchange="numChange()" class="w-30 h-20 ft-17 bgc-f4 c-fa pl-05" value="4" maxlength="2">&nbsp;&nbsp;&nbsp;人
+            </p>
+            <button type="button" class="range-left" onclick="rangeLeft()"></button>
+            <input type="range" id="setting-range" oninput="getNumber()" class="setting-range mt-35" value="4" min="4" max="18" step="1">
+            <button type="button" class="range-right" onclick="rangeRight()"></button>
+        </div>
+    </main>
+
+    <footer class="pt-10 pb-10 bgc-f0">
+        <button type="button" class="dis-b w-340 center-block bgc-fa" onclick="go()">
+            <p class="ft-20 lh-45 ls-02 c-white">去发牌</p>
+        </button>
+    </footer>
+
+    <script src="../js/setting.js"></script>
+</body>
+
+</html>
