@@ -8,29 +8,44 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link rel="stylesheet" href="../css/new.css">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../js/fan.js"></script>
 </head>
 
 <body class="bgc-29">
     <header>
         <div class="nav-bar bdb-01 bdc-74">
-            <a class="u1-5 w-18"></a>
+            <a id="back" class="u1-5 w-18"></a>
             <p class="ft-17 ls-01">查看身份</p>
             <a class="delete"></a>
         </div>
     </header>
 
-    <main class="pt-40">
-        <div class="rel w-230 h-330 center-block bgc-ff bd-03 bdc-white">
-            <img src="../img/fan.png" class="dis-b abs-center-block">
-            <div class="abs-center-block t-0 w-37 h-37 bds-50p bgc-white bd-01 bdc-ff">
-                <p class="ft-20 c-f5 abs-center-block">3</p>
+    <main class="pt-40 rel">
+
+        <div id="contrary" class="abs-center-block w-230 h-330 bgc-ff bd-03 bdc-white" style="visibility: visible;">
+            <img src="../img/fan.png" class="dis-b abs-center-middle">
+            <div class="abs-center-block t-n2 w-37 h-37 bds-50p bgc-white bd-01 bdc-ff">
+                <p class="ft-20 c-f5 abs-center-middle number"></p>
+            </div>
+        </div>
+
+        <div id="front" class="abs-center-block w-230 h-330 bgc-ff bd-03 bdc-white" style="visibility: hidden;">
+            <img src="../img/2_03.png" class="dis-b center-block mt-30">
+            <p id="identity" class="ft-20 c-29 fw-600 text-center mt-20">角色：幽灵</p>
+            <p id="text" class="ft-20 c-f5 fw-600 text-center">词组：西伯利亚</p>
+            <div class="mt-20 bdt-01 bdc-white pt-15 pl-15 pr-15">
+                <p class="ft-13 c-fc">想办法猜到别人的词,同时还要注意不要暴露自己哦！</p>
+            </div>
+            <div class="abs-center-block t-n2 w-37 h-37 bds-50p bgc-white bd-01 bdc-ff">
+                <p class="ft-20 c-f5 abs-center-middle number"></p>
             </div>
         </div>
     </main>
 
     <footer class="bgc-29 pt-30 pb-30">
-        <button type="button" class="dis-b ft-24 lh-45 c-white w-245 center-block" style="background-color: #fbb435;">
-            查看3号身份
+        <button type="button" id="next" class="dis-b ft-24 lh-45 c-white w-245 center-block" style="background-color: #fbb435;">
+            
         </button>
     </footer>
 </body>

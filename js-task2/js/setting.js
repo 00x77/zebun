@@ -1,9 +1,6 @@
 var inputNumber = document.getElementById("p-num");
 var rangeNumber = document.getElementById("setting-range");
 var heatmanNumber = document.getElementById("heatman");
-var policeNumber = document.getElementById("police");
-var sniperNumber = document.getElementById("sniper");
-var doctorNumber = document.getElementById("doctor");
 var civilianNumber = document.getElementById("civilian");
 var FTxt = document.getElementById("firstText");
 var STxt = document.getElementById("secondText");
@@ -64,20 +61,14 @@ function ENum() {
     var a = inputNumber.value;
     var index = parseInt(a);
     heatmanNumber.innerHTML = Math.floor(index / 4);
-    policeNumber.innerHTML = Math.floor(index / 4);
-    sniperNumber.innerHTML = Math.round(index / 16);
-    doctorNumber.innerHTML = Math.round(index / 16);
-    civilianNumber.innerHTML = (index - Math.floor(index / 4) * 2 - Math.round(index / 16) * 2);
+    civilianNumber.innerHTML = (index - Math.floor(index / 4));
 }
 //检测输入人数和分配人数是否相同
 function abc() {
     var a = parseInt(inputNumber.value);
     var b = parseInt(heatmanNumber.innerHTML);
-    var c = parseInt(policeNumber.innerHTML);
-    var d = parseInt(sniperNumber.innerHTML);
-    var e = parseInt(doctorNumber.innerHTML);
     var f = parseInt(civilianNumber.innerHTML);
-    if (a == b + c + d + e + f) {
+    if (a == b + f) {
         return true;
     }
 }
@@ -95,15 +86,6 @@ function shuffle() {
     var a = [];
     for (var i = 0; i < heatmanNumber.innerHTML; i++) {
         a.push("杀手")
-    }
-    for (var i = 0; i < policeNumber.innerHTML; i++) {
-        a.push("警察")
-    }
-    for (var i = 0; i < sniperNumber.innerHTML; i++) {
-        a.push("狙击手")
-    }
-    for (var i = 0; i < doctorNumber.innerHTML; i++) {
-        a.push("医生")
     }
     for (var i = 0; i < civilianNumber.innerHTML; i++) {
         a.push("平民")
@@ -128,6 +110,9 @@ function go() {
     var d = isnull(STxt);
     if (inputNumber.value >= 4 && inputNumber.value <= 18 && text == true && b == true && c == true && d == true) {
         shuffle();
+        sessionStorage.setItem("identity",shuffle());
+        sessionStorage.setItem("FTxt",FTxt.value);
+        sessionStorage.setItem("STxt",STxt.value);
         window.location.href = "fan.html";
     }
     else if (inputNumber.value < 4 && inputNumber.value > 18 && text != true) {
