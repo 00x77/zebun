@@ -1,6 +1,7 @@
 var page = document.querySelector(".page");
 var index = 0;
 var dots = document.getElementsByTagName("li");
+//分页按钮上色
 function showCurrentDot() {
     for (var i = 0; i < dots.length; i++) {
         dots[i].className = "";
@@ -9,7 +10,7 @@ function showCurrentDot() {
 }
 
 showCurrentDot();
-
+//上一页下一页按钮的隐藏
 function hidden() {
     if (index == 0) {
         document.getElementById("butLeft").style.visibility = "hidden";
@@ -22,7 +23,7 @@ function hidden() {
 }
 
 hidden();
-
+//分页按钮
 for (var i = 0, len = dots.length; i < len; i++) {
     !function (i) {
         dots[i].onclick = function () {
@@ -33,7 +34,7 @@ for (var i = 0, len = dots.length; i < len; i++) {
         }
     }(i);
 }
-
+//上一页按钮
 function pre() {
     index--;
     if (index < 0) {
@@ -43,7 +44,7 @@ function pre() {
     showCurrentDot();
     hidden();
 }
-
+//下一页按钮
 function next() {
     index++;
     if (index >= dots.length) {
@@ -53,7 +54,7 @@ function next() {
     showCurrentDot();
     hidden();
 }
-
+//游戏界面
 function jump() {
     window.location.href = "setting.html";
 }

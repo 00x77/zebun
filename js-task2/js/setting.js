@@ -62,6 +62,10 @@ function ENum() {
     var index = parseInt(a);
     heatmanNumber.innerHTML = Math.floor(index / 4);
     civilianNumber.innerHTML = (index - Math.floor(index / 4));
+    var x = heatmanNumber.innerHTML;
+    var y = civilianNumber.innerHTML;
+    sessionStorage.setItem("heatmanNumber", x);
+    sessionStorage.setItem("civilianNumber", y);
 }
 //检测输入人数和分配人数是否相同
 function abc() {
@@ -113,6 +117,9 @@ function go() {
         sessionStorage.setItem("identity",shuffle());
         sessionStorage.setItem("FTxt",FTxt.value);
         sessionStorage.setItem("STxt",STxt.value);
+        var a = new Date();
+        var time = a.getTime();
+        sessionStorage.setItem("startTime", time);
         window.location.href = "fan.html";
     }
     else if (inputNumber.value < 4 && inputNumber.value > 18 && text != true) {

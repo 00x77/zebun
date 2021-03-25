@@ -6,6 +6,14 @@ $BdGrey: #cecece;
 $BgGrey: #f0f0f0;
 $BoGrey: #9a9a9a;
 
+.t-70 {
+    top: 7rem;
+}
+
+.t-185 {
+    top: 18.5rem;
+}
+
 .r-04 {
     right: 0.4rem;
 }
@@ -34,8 +42,16 @@ $BoGrey: #9a9a9a;
     width: 2.3rem;
 }
 
+.w-26 {
+    width: 2.6rem;
+}
+
 .w-37 {
     width: 3.7rem;
+}
+
+.w-39 {
+    width: 3.9rem;
 }
 
 .w-60 {
@@ -70,6 +86,10 @@ $BoGrey: #9a9a9a;
     width: 34rem;
 }
 
+.w-350 {
+    width: 35rem;
+}
+
 .w-616 {
     width: 61.6rem;
 }
@@ -80,6 +100,14 @@ $BoGrey: #9a9a9a;
 
 .h-17 {
     height: 1.7rem;
+}
+
+.h-18 {
+    height: 1.8rem;
+}
+
+.h-26 {
+    height: 2.6rem;
 }
 
 .h-28 {
@@ -94,8 +122,16 @@ $BoGrey: #9a9a9a;
     height: 3.7rem;
 }
 
+.h-114 {
+    height: 11.4rem;
+}
+
 .h-225 {
     height: 22.5rem;
+}
+
+.h-285 {
+    height: 28.5rem;
 }
 
 .h-330 {
@@ -126,6 +162,10 @@ $BoGrey: #9a9a9a;
     border-color: $DkYllw;
 }
 
+.bdc-c9 {
+    border-color: #c9c9c9;
+}
+
 .bdc-lb {
     border-color: $LtBlue;
 }
@@ -148,6 +188,14 @@ $BoGrey: #9a9a9a;
 
 .bdc-white {
     border-color: #fff;
+}
+
+.brts-02 {
+    border-radius: 0 0.2rem 0 0;
+}
+
+.blts-02 {
+    border-radius: 0.2rem 0 0 0;
 }
 
 .bgc-f0 {
@@ -182,6 +230,10 @@ $BoGrey: #9a9a9a;
     background-color: #29bde0;
 }
 
+.bgc-c9 {
+    background-color: #c9c9c9;
+}
+
 .bgc-f4 {
     background-color: #f4f5f5;
 }
@@ -190,7 +242,7 @@ $BoGrey: #9a9a9a;
     background-color: #f5c97b;
 }
 
-.bgcf6 {
+.bgc-f6 {
     background-color: #f66f6f;
 }
 
@@ -198,11 +250,11 @@ $BoGrey: #9a9a9a;
     background-color: #83b09a;
 }
 
-.bgcrgba {
+.bgc-rgba-29-05 {
     background-color: rgba(41,189,224,0.5);
 }
 
-.bgcrgbawhite {
+.bgc-rgba-white-08 {
     background-color: rgba(#fff,0.8);
 }
 
@@ -242,7 +294,7 @@ $BoGrey: #9a9a9a;
     color: #787878;
 }
 
-.cff {
+.c-ff {
     color: #ffc865;
 }
 
@@ -250,7 +302,7 @@ $BoGrey: #9a9a9a;
     color: #a6a6a6;
 }
 
-.c51 {
+.c-51 {
     color: #515151;
 }
 

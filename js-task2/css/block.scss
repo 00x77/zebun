@@ -39,7 +39,6 @@ main {
     color: #fff;
 }
 
-
 .icon-bar {
     display: block;
     width: 1.7rem;
@@ -91,12 +90,14 @@ main {
     background-size: 0% 100%;
 	border-radius: 0 0.5rem 0.5rem 0;
 }
+
 .range-left,.range-right {
     position: absolute;
     width: 1.4rem;
     height: 1.4rem;
     border: 0.1rem solid #d9d9d9;
-    }
+}
+
 .range-left {
     top: 6rem;
     left: 1.8rem;
@@ -107,7 +108,6 @@ main {
     right: 1.8rem;
     background-image: url(../img/icon-03.png);
 }
-
 
 .setting-range::-webkit-slider-thumb {
 	appearance: none;
@@ -170,6 +170,25 @@ main {
     background-image: url(../img/spr.png);
 }
 
+.home {
+    width: 2.6rem;
+    height: 2.1rem;
+    background-image: url(../img/home.png);
+}
+
+.question {
+    width: 2rem;
+    height: 2rem;
+    margin-left: 0.6rem;
+    background-image: url(../img/Q.png);
+}
+
+.title-img {
+    background-image: url(../img/main.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
 .block {
     float: left;
     width: 6.8rem;
@@ -181,6 +200,7 @@ main {
     width: 100%;
     height: 6.8rem;
     border: 0.3rem solid #fff;
+    background-color: #fff;
 }
 
 .block-toggle-header {
@@ -199,4 +219,103 @@ main {
     line-height: 1.2rem;
     background-color: #83b09a;
     color: #fff;
+}
+
+.block-dropmenu {
+    width: 100%;
+    height: 3.7rem;
+    padding: 1.1rem 0;
+    button {
+        width: 1.5rem;
+        height: 1.5rem;
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+.moon {
+    position: relative;
+    padding-bottom: 3rem;
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: -4.6rem;
+        width: 3rem;
+        height: 3rem;
+        border: 0.1rem solid #c9c9c9;
+        border-radius: 50%;
+        background-image: url(../img/moon.png);
+        background-color: #fff;
+    }
+}
+
+.sun {
+    position: relative;
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: -4.6rem;
+        width: 3rem;
+        height: 3rem;
+        border: 0.1rem solid #c9c9c9;
+        border-radius: 50%;
+        background-image: url(../img/sun.png);
+        background-color: #fff;
+    }
+}
+
+.step {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 3.8rem;
+    letter-spacing: 0.1rem;
+    background-color: #24a7c6;
+    color: #fff;
+    &::before {
+        content: "";
+        position: absolute;
+        left: -0.8rem;
+        top: 1.4rem;
+        width: 0;
+        height: 0;
+        border-top: 0.55rem solid transparent;
+        border-right: 0.8rem solid #24a7c6;
+        border-bottom: 0.55rem solid transparent;
+    }
+}
+
+.step-chance::before {
+    content: "";
+    position: absolute;
+    left: -0.8rem;
+    top: 1.4rem;
+    width: 0;
+    height: 0;
+    border-top: 0.55rem solid transparent;
+    border-right: 0.8rem solid #92b7a5;
+    border-bottom: 0.55rem solid transparent;
+}
+
+.caret {
+    position: absolute;
+    top: 4rem;
+    left: 3.5rem;
+    width: 0;
+    height: 0;
+    border-top: 0.6rem solid #fff;
+    border-left: 0.35rem solid transparent;
+    border-right: 0.35rem solid transparent;
+    opacity: 0.8;
+}
+
+.result-line {
+    height: 7.6rem;
+    padding: 0.5rem 4rem 1rem;
+    border-bottom: 0.1rem solid #ddd;
+    color: #bcbcbc;
 }
