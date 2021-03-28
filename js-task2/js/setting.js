@@ -19,6 +19,7 @@ function getNumber() {
         inputNumber.value = rangeNumber.value;
     }
     color();
+    ENum();
 }
 //滚动条改变玩家人数随着改变
 function numChange() {
@@ -33,6 +34,7 @@ function numChange() {
         rangeNumber.value = 4;
         color();
     }
+    ENum();
 }
 //减号按钮与滚动条同步
 function rangeLeft() {
@@ -44,6 +46,7 @@ function rangeLeft() {
         inputNumber.value = rangeNumber.value;
         color();
     }
+    ENum();
 }
 //加号按钮与滚动条同步
 function rangeRight() {
@@ -55,17 +58,13 @@ function rangeRight() {
         inputNumber.value = rangeNumber.value;
         color();
     }
+    ENum();
 }
 //设置各个身份的数量
 function ENum() {
-    var a = inputNumber.value;
-    var index = parseInt(a);
+    var index = parseInt(inputNumber.value);
     heatmanNumber.innerHTML = Math.floor(index / 4);
     civilianNumber.innerHTML = (index - Math.floor(index / 4));
-    var x = heatmanNumber.innerHTML;
-    var y = civilianNumber.innerHTML;
-    sessionStorage.setItem("heatmanNumber", x);
-    sessionStorage.setItem("civilianNumber", y);
 }
 //检测输入人数和分配人数是否相同
 function abc() {
@@ -120,6 +119,10 @@ function go() {
         var a = new Date();
         var time = a.getTime();
         sessionStorage.setItem("startTime", time);
+        var x = heatmanNumber.innerHTML;
+        var y = civilianNumber.innerHTML;
+        sessionStorage.setItem("heatmanNumber", x);
+        sessionStorage.setItem("civilianNumber", y);
         window.location.href = "fan.html";
     }
     else if (inputNumber.value < 4 && inputNumber.value > 18 && text != true) {

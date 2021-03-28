@@ -45,11 +45,18 @@ $(document).ready(function () {
     }
     else {
         var day = [0];
-        sessionStorage.setItem("day",day);
+        sessionStorage.setItem("day", day);
     }
 
     sessionStorage.removeItem("kill-step");
     sessionStorage.removeItem("vote-step");
+    if (sessionStorage.getItem("beKill") != null) {
+        var beKill = sessionStorage.getItem("beKill").split(",");
+    }
+    if (sessionStorage.getItem("beVote") != null) {
+        var beVote = sessionStorage.getItem("beVote").split(",");
+    }
+    var identity = sessionStorage.getItem("identity").split(",");
 
     function voteReturn() {
         if (sessionStorage.getItem("vote-step") != null) {
@@ -75,22 +82,45 @@ $(document).ready(function () {
         var N = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
         var chinese = convertToChinese(number);
         $("#well").append('<div class="w-100p bd-01 bdc-c9 mb-25">' +
-            '<div class="ft-15 lh-40 ls-02 text-center bgc-white c-29">第' + chinese + '天</div>' +
-            '<div class="bdt-01 bdc-c9 bgc-c9">' +
-            '<div class="f-l w-20 h-285 bgc-white bdr-01 bdc-c9 brts-02"></div>' +
-            '<div class="h-285 ml-20 pt-25 pr-30 pl-30 pb-40 bgc-white blts-02">' +
+            '<div class="dayHeader ft-15 lh-40 ls-02 text-center bgc-white c-29">第' + chinese + '天</div>' +
+            '<div class="dayBody dis-f bdt-01 bdc-c9 bgc-c9">' +
+            '<div class="f-l w-20 bgc-white bdr-01 bdc-c9 brts-02"></div>' +
+            '<div class="flex1 pt-25 pr-30 pl-30 pb-40 bgc-white blts-02">' +
             '<div class="moon">' +
             '<button class="step kill">杀手杀人</button>' +
+            '<p class="text-center ft-14 lh-30 killperson" style="position:relative;bottom:0.5rem"></p>' +
             '</div>' +
             '<div class="sun">' +
-            '<button class="step Dspeak" disabled>亡灵发表遗言</button>' +
-            '<button class="step Lspeak" disabled>玩家依次发言</button>' +
-            '<button class="step vote" disabled>投票</button>' +
+            '<button class="step Dspeak">亡灵发表遗言</button>' +
+            '<button class="step Lspeak">玩家依次发言</button>' +
+            '<button class="step vote">投票</button>' +
+            '<p class="text-center ft-14 lh-30 voteperson" style="position:relative;bottom:0.5rem"></p>' +
             '</div>' +
             '</div>' +
             '</div>' +
             '</div>')
+        if (sessionStorage.getItem("beKill") != null && beKill[o] != undefined) {
+            $(".killperson").eq(o).text((parseInt(beKill[o]) + 1) + "号被杀死，身份是" + identity[beKill[o]])
+        }
+        if (sessionStorage.getItem("beVote") != null && beVote[o] != undefined) {
+            $(".voteperson").eq(o).text((parseInt(beVote[o]) + 1) + "号被投死，身份是" + identity[beVote[o]])
+        }
     }
+
+
+
+    if (day.length > 1) {
+        for (let i = 0, len = day.length - 1; i < len; i++) {
+            $(".dayBody").eq(i).hide();
+        }
+        for (let i = 0; i < day.length; i++) {
+            $(".dayHeader").eq(i).click(function () {
+                $(".dayBody").eq(i).toggle();
+            })
+        }
+    }
+
+
     //根据进行到第几步并给按钮上色
     if (sessionStorage.getItem("step") != null) {
         var a = sessionStorage.getItem("step");
@@ -101,52 +131,69 @@ $(document).ready(function () {
         var x = [];
     }
 
-    for (var i = 0; i < x.length; i++) {
-        $(".step").eq(i).css("background-color", "#92b7a5");
-        $(".step").eq(i).addClass("step-chance")
-        $(".step").eq(i).attr("disabled", true);
+    function disable() {
+        var p = x.length;
+        for (var i = 0; i < x.length; i++) {
+            $(".step").eq(i).css("background-color", "#92b7a5");
+            $(".step").eq(i).addClass("step-chance");
+        }
+        $(".step").eq(p).attr("disabled", false);
     }
+    disable();
+
     //杀人按钮点击效果
-    $(".kill").click(function () {
-        x.push(0);
-        sessionStorage.setItem("step", x);
-        sessionStorage.setItem("kill-step", "abaaba")
-        window.location.href = "kill.html";
-    });
-    //死者发言按钮点击效果
-    $(".Dspeak").click(function () {
-        x.push(0);
-        var l = document.getElementsByClassName("Dspeak");
-        for (var i = 0; i < l.length; i++) {
-            $(".Dspeak").eq(i).css("background-color", "#92b7a5");
-            $(".Dspeak").eq(i).addClass("step-chance")
-            $(".Dspeak").eq(i).attr("disabled", true);
-            $(".Lspeak").eq(i).attr("disabled", false);
+    for (let i = 0; i < day.length; i++) {
+        $(".kill").eq(i).click(function () {
+            x.push(0);
+            sessionStorage.setItem("step", x);
+            sessionStorage.setItem("kill-step", 1)
+            window.location.href = "kill.html";
+        });
+        //死者发言按钮点击效果
+        $(".Dspeak").eq(i).click(function () {
+            if (x.length % 4 != 1) {
+                alert("请按顺序来！")
+            }
+            else {
+                x.push(0);
+                disable();
+                alert("请死者亮明身份并发表遗言。")
+            }
+        })
+        //讨论按钮点击效果
+        $(".Lspeak").eq(i).click(function () {
+            if (x.length % 4 != 2) {
+                alert("请按顺序来！")
+            }
+            else {
+                x.push(0);
+                disable();
+                alert("玩家依次发言讨论。")
+            }
+        })
+        //投票按钮点击效果
+        $(".vote").eq(i).click(function () {
+            if (x.length % 4 != 3) {
+                alert("请按顺序来！")
+            }
+            else {
+                x.push(0);
+                day.push(0)
+                sessionStorage.setItem("day", day);
+                sessionStorage.setItem("step", x);
+                sessionStorage.setItem("vote-step", 1);
+                window.location.href = "kill.html";
+            }
+        });
+    }
+
+    $("#end").click(function () {
+        var c = confirm("确定要结束游戏吗？")
+        if (c == true) {
+            sessionStorage.clear();
+            location.href = "choose.html"
         }
-        alert("请死者亮明身份并发表遗言。")
     })
-    //讨论按钮点击效果
-    $(".Lspeak").click(function () {
-        x.push(0);
-        var l = document.getElementsByClassName("Lspeak");
-        for (var i = 0; i < l.length; i++) {
-            $(".Lspeak").eq(i).css("background-color", "#92b7a5");
-            $(".Lspeak").eq(i).addClass("step-chance")
-            $(".Lspeak").eq(i).attr("disabled", true);
-            $(".vote").eq(i).attr("disabled", false);
-        }
-        alert("玩家依次发言讨论。")
-    })
-    //投票按钮点击效果
-    $(".vote").click(function () {
-        x.push(0);
-        day.push(0)
-        sessionStorage.setItem("day", day);
-        sessionStorage.setItem("step", x);
-        sessionStorage.setItem("day", day);
-        sessionStorage.setItem("vote-step", "abaaba")
-        window.location.href = "kill.html";
-    });
     //法官日记按钮点击效果
     $("#diary").click(function () {
         sessionStorage.setItem("ben", 0);

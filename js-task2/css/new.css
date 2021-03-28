@@ -269,7 +269,6 @@ main {
 
 .moon {
   position: relative;
-  padding-bottom: 3rem;
 }
 
 .moon::before {
@@ -462,6 +461,10 @@ main {
 
 .t-30 {
   top: 3rem;
+}
+
+.t-35 {
+  top: 3.5rem;
 }
 
 .t-40 {

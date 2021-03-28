@@ -3,81 +3,116 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
     <title>首页</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link rel="stylesheet" href="../css/new.css">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../js/choose.js"></script>
 </head>
 
-<body class="bgc-f0">
+<body class="bgc-29 of-h">
+    <div id="mainbody" class="abs w-100p h-100p t-0">
 
-    <header>
-        <div class="nav-bar">
-            <a>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-        </div>
-    </header>
-
-    <main>
-        <div class="pt-30 pb-30 bgc-f0">
-            <div class="w-310 center-block bd-01 bdc-g bgc-white text-center mb-25">
-                <div class="rel ft-17 lh-58 ls-01 c-9a bgc-white">
-                    上次游戏：捉鬼猜词版
-                    <a href="#" class="jump abs t-25 r-10"></a>
-                </div>
+        <header class="abs">
+            <div class="nav-bar">
+                <a id="menu">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
             </div>
-            <div class="rel w-310 h-393 center-block bd-01 bdc-g bgc-white text-center of-h">
-                <div class="abs w-616 page" style="left: 0px;">
+        </header>
 
-                    <div class="f-l w-308 bgc-white">
-                        <div class="bdb-01 bdc-dy ft-18 lh-45 ls-01 c-ly">
-                            捉鬼游戏
+        <main>
+            <div class="pt-30 pb-30 bgc-f0" style="height: 100rem;">
+                <div class="w-310 center-block bd-01 bdc-g bgc-white text-center mb-25">
+                    <div class="rel ft-17 lh-58 ls-01 c-9a bgc-white">
+                        上次游戏：捉鬼猜词版
+                        <a href="#" class="jump abs t-25 r-10"></a>
+                    </div>
+                </div>
+                <div class="rel w-310 h-393 center-block bd-01 bdc-g bgc-white text-center of-h">
+                    <div class="abs w-616 page" style="left: 0px;">
+
+                        <div class="f-l w-308 bgc-white">
+                            <div class="bdb-01 bdc-dy ft-18 lh-45 ls-01 c-ly">
+                                捉鬼游戏
+                            </div>
+                            <div class="rel pt-15 pr-25 pl-25">
+                                <a type="button" class="nextpage version-button">简化版</a>
+                                <p class="ft-12 lh-40 ls-01 text-center c-78">有1133个用户正在玩此款游戏</p>
+                                <a type="button" class="version-button">猜词版</a>
+                                <p class="ft-12 lh-40 ls-01 text-center c-78">有1133个用户正在玩此款游戏</p>
+                                <a type="button" class="version-button">白痴版</a>
+                                <p class="ft-12 lh-40 ls-01 text-center c-78">有1133个用户正在玩此款游戏</p>
+                            </div>
                         </div>
-                        <div class="rel pt-15 pr-25 pl-25">
-                            <a type="button" onclick="jump()" class="version-button">简化版</a>
-                            <p class="ft-12 lh-40 ls-01 text-center c-78">有1133个用户正在玩此款游戏</p>
-                            <a type="button" class="version-button">猜词版</a>
-                            <p class="ft-12 lh-40 ls-01 text-center c-78">有1133个用户正在玩此款游戏</p>
-                            <a type="button" class="version-button">白痴版</a>
-                            <p class="ft-12 lh-40 ls-01 text-center c-78">有1133个用户正在玩此款游戏</p>
+
+                        <div class="f-l w-308 bgc-white">
+                            <div class="bdb-01 bdc-dy ft-18 lh-45 ls-01 c-ly">
+                                杀人游戏
+                            </div>
+                            <div class="rel pt-15 pr-25 pl-25">
+                                <a type="button" class="nextpage version-button">简化版</a>
+                                <p class="ft-12 lh-40 ls-01 text-center c-78">有777个用户正在玩此款游戏</p>
+                                <a type="button" class="version-button">警版</a>
+                                <p class="ft-12 lh-40 ls-01 text-center c-78">有777个用户正在玩此款游戏</p>
+                                <a type="button" class="version-button">3.0版</a>
+                                <p class="ft-12 lh-40 ls-01 text-center c-78">有777个用户正在玩此款游戏</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="f-l w-308 bgc-white">
-                        <div class="bdb-01 bdc-dy ft-18 lh-45 ls-01 c-ly">
-                            杀人游戏
-                        </div>
-                        <div class="rel pt-15 pr-25 pl-25">
-                            <a type="button" onclick="jump()" class="version-button">简化版</a>
-                            <p class="ft-12 lh-40 ls-01 text-center c-78">有777个用户正在玩此款游戏</p>
-                            <a type="button" class="version-button">警版</a>
-                            <p class="ft-12 lh-40 ls-01 text-center c-78">有777个用户正在玩此款游戏</p>
-                            <a type="button" class="version-button">3.0版</a>
-                            <p class="ft-12 lh-40 ls-01 text-center c-78">有777个用户正在玩此款游戏</p>
-                        </div>
-                    </div>
+                    <a type="button" id="butLeft" class="butLeft abs t-185 l-04"></a>
+
+                    <a type="button" id="butRight" class="turn-page abs t-185 r-04"></a>
+
+                    <nav class="page-navigation abs b-0 w-100p">
+                        <ul class="pagination rel b-10 center-block w-20 h-08 mt-05">
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                        </ul>
+                    </nav>
+
                 </div>
-
-                <a type="button" id="butLeft" onclick="pre()" class="butLeft abs t-185 l-04"></a>
-
-                <a type="button" id="butRight" onclick="next()" class="turn-page abs t-185 r-04"></a>
-
-                <nav class="page-navigation abs b-0 w-100p">
-                    <ul class="pagination rel b-10 center-block w-20 h-08 mt-05">
-                        <li><a href="#"></a></li>
-                        <li><a href="#"></a></li>
-                    </ul>
-                </nav>
-
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
 
-    <script src="../js/choose.js"></script>
+    <div class="abs w-245 t-35 bgc-white z-n9999" style="height: 100rem;">
+        <div class="dis-f align-center bdb-01 bdc-g pl-25 pr-25 space-between">
+            <div class="dis-f align-center">
+                <img class="mr-15" src="../img/sound.png">
+                <p class="ft-15 c-29 lh-40">公告</p>
+            </div>
+            <img src="../img/go.png">
+        </div>
+        <div class="dis-f align-center bdb-01 bdc-g pl-25 pr-25 space-between">
+            <div class="dis-f align-center">
+                <img class="mr-15" src="../img/setting.png">
+                <p class="ft-15 c-29 lh-40">设置</p>
+            </div>
+            <img src="../img/go.png">
+        </div>
+        <div class="dis-f align-center bdb-01 bdc-g pl-25 pr-25 space-between">
+            <div class="dis-f align-center">
+                <img class="mr-15" src="../img/question.png">
+                <p class="ft-15 c-29 lh-40">帮助</p>
+            </div>
+            <img src="../img/go.png">
+        </div>
+        <div class="dis-f align-center bdb-01 bdc-g pl-25 pr-25 space-between">
+            <div class="dis-f align-center">
+                <img class="mr-15" src="../img/en.png">
+                <p class="ft-15 c-29 lh-40">关于</p>
+            </div>
+            <img src="../img/go.png">
+        </div>
+    </div>
+
+
 </body>
 
 </html>

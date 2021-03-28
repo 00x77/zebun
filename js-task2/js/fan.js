@@ -11,6 +11,7 @@ $(document).ready(function () {
     c++;
 
     $("#back").click(function () {
+        sessionStorage.clear();
         location.href = "setting.html";
     });
 

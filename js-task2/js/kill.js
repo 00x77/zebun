@@ -18,7 +18,7 @@ $(document).ready(function () {
         $("#header-title").text("杀手杀人");
         $("#pop-ups").text("杀手请睁眼，杀手请选择要杀的对象。");
     }
-    else if (sessionStorage.getItem("vote-step") !=null) {
+    else if (sessionStorage.getItem("vote-step") != null) {
         $("#header-title").text("投票");
         $("#pop-ups").text("发言谈论结束，大家请投票。");
     }
@@ -27,6 +27,7 @@ $(document).ready(function () {
     var civilianNumber = parseInt(sessionStorage.getItem("civilianNumber"));
     var a = sessionStorage.getItem("identity");
     var identity = a.split(",");
+    var person = JSON.parse(sessionStorage.getItem("person"));
     //根据人数创建格子
     for (var i = 0; i < identity.length; i++) {
         $("#well").append('<div class="block"> ' +
@@ -38,52 +39,52 @@ $(document).ready(function () {
             '<button><img src="../img/kill.png" class="dropmenu-btn btn-sm-1"></button>' +
             '</div>' +
             '</div>')
+        if (person[i].condition == "died") {
+            $(".block-toggle-header").eq(i).css("background-color", "#83b09a");
+            $(".block-toggle").eq(i).attr("disabled", true);
+        }
     }
-    //给死的人的格子添加颜色
-    for (var i = 0; i < beKill.length; i++) {
-        $(".block-toggle-header").eq(beKill[i]).css("background-color", "#83b09a");
-        $(".block-toggle").eq(beKill[i]).attr("disabled", true);
-    }
-
-    for (var i = 0; i < beVote.length; i++) {
-        $(".block-toggle-header").eq(beVote[i]).css("background-color", "#83b09a");
-        $(".block-toggle").eq(beVote[i]).attr("disabled", true);
-    }
-
+    //下拉按钮隐藏
     $(".block-dropmenu").hide();
+
+    function numberReduce(i) {
+        if (identity[i] == "杀手") {
+            heatmanNumber--;
+            sessionStorage.setItem("heatmanNumber", heatmanNumber)
+        }
+        else {
+            civilianNumber--;
+            sessionStorage.setItem("civilianNumber", civilianNumber)
+        }
+    }
     //按钮点击效果
     for (var i = 0, len = identity.length; i < len; i++) {
         !function (i) {
-            $(".block-toggle").eq(i).click(function() {
-                $(".block-dropmenu").hide();
-                $(".block-dropmenu").eq(i).toggle();
-            })
+            $(".block-toggle").eq(i).click(function () {
+                if (sessionStorage.getItem("kill-step") != null && person[i].identity == "杀手") {
+                    alert("请选择正确的目标!");
+                }
+                else {
+                    $(".block-dropmenu").hide();
+                    $(".block-dropmenu").eq(i).toggle();
+                }
+            });
 
-            $(".block-dropmenu").eq(i).click(function() {
+            $(".block-dropmenu").eq(i).click(function () {
+                person[i].condition = "died";
                 if (sessionStorage.getItem("kill-step") != null) {
+                    person[i].beKill = 1;
                     beKill.push(i);
-                    sessionStorage.setItem("beKill",beKill);
-                    if (identity[i] == "杀手") {
-                        heatmanNumber--;
-                        sessionStorage.setItem("heatmanNumber", heatmanNumber)
-                    }
-                    else {
-                        civilianNumber--;
-                        sessionStorage.setItem("civilianNumber", civilianNumber)
-                    }
+                    sessionStorage.setItem("beKill", beKill);
+                    numberReduce(i);
                 }
-                else if (sessionStorage.getItem("vote-step") !=null) {
+                else if (sessionStorage.getItem("vote-step") != null) {
+                    person[i].beVote = 1;
                     beVote.push(i);
-                    sessionStorage.setItem("beVote",beVote);
-                    if (identity[i] == "杀手") {
-                        heatmanNumber--;
-                        sessionStorage.setItem("heatmanNumber", heatmanNumber)
-                    }
-                    else {
-                        civilianNumber--;
-                        sessionStorage.setItem("civilianNumber", civilianNumber)
-                    }
+                    sessionStorage.setItem("beVote", beVote);
+                    numberReduce(i);
                 }
+                sessionStorage.setItem("person", JSON.stringify(person));
                 window.location.href = "ben.html";
             })
         }(i);

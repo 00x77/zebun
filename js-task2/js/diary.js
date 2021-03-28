@@ -1,6 +1,22 @@
 $(document).ready(function () {
     var a = sessionStorage.getItem("identity");
     var identity = a.split(",");
+    if (sessionStorage.getItem("person") != null) {
+        var person = JSON.parse(sessionStorage.getItem("person"));
+    }
+    else {
+        var person = [];
+        for (let i = 0; i < identity.length; i++) {
+            person[i] = {
+                number: (i + 1) + "号",
+                identity: identity[i],
+                condition: "alive",
+                beVote: 0,
+                beKill: 0
+            };
+        }
+        sessionStorage.setItem("person", JSON.stringify(person));
+    }
     //根据人数创建格子
     for (var i = 0; i < identity.length; i++) {
         $("#well").append('<div class="block"> ' +
@@ -9,21 +25,9 @@ $(document).ready(function () {
             '<div class="block-toggle-footer">' + (i + 1) + '号</div>' +
             '</button>' +
             '</div>')
-    }
-    //检测是从哪个页面跳转及是否有人死过
-    if (sessionStorage.getItem("beKill") != null) {
-        var beKill = sessionStorage.getItem("beKill").split(",");
-        for (var i = 0; i < beKill.length; i++) {
-            $(".block-toggle-header").eq(beKill[i]).css("background-color", "#83b09a");
-            $(".block-toggle").eq(beKill[i]).attr("disabled", true);
-        }
-    }
-
-    if (sessionStorage.getItem("beVote") != null) {
-        var beVote = sessionStorage.getItem("beVote").split(",");
-        for (var i = 0; i < beVote.length; i++) {
-            $(".block-toggle-header").eq(beVote[i]).css("background-color", "#83b09a");
-            $(".block-toggle").eq(beVote[i]).attr("disabled", true);
+        if (person[i].condition != "alive") {
+            $(".block-toggle-header").eq(i).css("background-color", "#83b09a");
+            $(".block-toggle").eq(i).attr("disabled", true);
         }
     }
     //检测是从哪个页面跳转过来的

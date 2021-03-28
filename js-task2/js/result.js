@@ -18,8 +18,8 @@ $(document).ready(function () {
         stepTime[i] = parseInt(x[i])
     }
     for (var i = 0; i < day; i++) {
-        minuteTime[i] = Math.round((stepTime[i + 1] - stepTime[i]) / 1000 / 60);
-        secondTime[i] = Math.round((stepTime[i + 1] - stepTime[i]) / 1000 % 60);
+        minuteTime[i] = Math.floor((stepTime[i + 1] - stepTime[i]) / 1000 / 60);
+        secondTime[i] = Math.floor((stepTime[i + 1] - stepTime[i]) / 1000 % 60);
     }
     //根据获胜的人添加对应的样式
     if (sessionStorage.getItem("heatmanWin") != null) {
@@ -38,45 +38,22 @@ $(document).ready(function () {
     $("#civilianVo").text("平民词汇：" + FTxt);
 
     for (var i = 0; i < day; i++) {
-        //检测是否有人被投死
-        if (sessionStorage.getItem("beVote") != null) {
-            //检测是投票结束游戏还是杀人结束游戏
-            if (beVote[i] != undefined) {
-                $("main").append(
-                    '<div class="result-line ft-13 lh-20">' +
-                    '<p class="dis-f space-between">' +
-                    '<span class="ft-15 c-51">第' + (i + 1) + '天</span>' +
-                    '<span class="ft-12">' + minuteTime[i] + '分' + secondTime[i] + '秒</span>' +
-                    '</p>' +
-                    '<p>晚上：' + beKill[i] + '号被杀手杀死，' + beKill[i] + '号是' + identity[beKill[i]] + '</p>' +
-                    '<p>白天：' + beVote[i] + '号被全民投票投死，' + beVote[i] + '号是' + identity[beVote[i]] + '</p>' +
-                    '</div>'
-                )
-            }
-            else {
-                $("main").append(
-                    '<div class="result-line ft-13 lh-20">' +
-                    '<p class="dis-f space-between">' +
-                    '<span class="ft-15 c-51">第' + (i + 1) + '天</span>' +
-                    '<span class="ft-12">' + minuteTime[i] + '分' + secondTime[i] + '秒</span>' +
-                    '</p>' +
-                    '<p>晚上：' + beKill[i] + '号被杀手杀死，' + beKill[i] + '号是' + identity[beKill[i]] + '</p>' +
-                    '</div>'
-                )
-            }
+        $("main").append(
+            '<div class="result-line ft-13 lh-20">' +
+            '<p class="dis-f space-between">' +
+            '<span class="ft-15 c-51">第' + (i + 1) + '天</span>' +
+            '<span class="ft-12">' + minuteTime[i] + '分' + secondTime[i] + '秒</span>' +
+            '</p>' +
+            '<p>晚上：' + (parseInt(beKill[i]) + 1) + '号被杀手杀死，' + (parseInt(beKill[i]) + 1) + '号是' + identity[beKill[i]] + '</p>' +
+            '<p class="day"></p>' +
+            '</div>'
+        )
+        if (beVote[i] != undefined) {
+            $(".day").eq(i).text("白天：" + (parseInt(beVote[i]) + 1) + "号被全民投票投死，" + (parseInt(beVote[i]) + 1) + "号是" + identity[beVote[i]])
         }
-        else {
-            $("main").append(
-                '<div class="result-line ft-13 lh-20">' +
-                '<p class="dis-f space-between">' +
-                '<span class="ft-15 c-51">第' + (i + 1) + '天</span>' +
-                '<span class="ft-12">' + minuteTime[i] + '分' + secondTime[i] + '秒</span>' +
-                '</p>' +
-                '<p>晚上：' + beKill[i] + '号被杀手杀死，' + beKill[i] + '号是' + identity[beKill[i]] + '</p>' +
-                '</div>'
-            )
-        }
+        
     }
+
 
     $("#home").click(function () {
         sessionStorage.clear();
