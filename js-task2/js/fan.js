@@ -16,13 +16,18 @@ $(document).ready(function () {
     });
 
     $("#next").click(function () {
+        let a = $("#front");
+        let b = $("#contary");
+        let f = $("#identity");
+        let d = $(".number");
+        let e = $("#next");
         if (i < identity.length * 2 - 2) {
             if (i == 0 || i % 2 == 0) {
-                $("#front").css({ "visibility": "visible" });
-                $("#contary").css({ "visibility": "hidden" });
-                $("#identity").text("角色:" + identity[(n - 1)])
-                $(".number").text(n);
-                $("#next").text("隐藏并传递给" + c + "号");
+                a.css({ "visibility": "visible" });
+                b.css({ "visibility": "hidden" });
+                f.text("角色:" + identity[(n - 1)])
+                d.text(n);
+                e.text("隐藏并传递给" + c + "号");
                 if (identity[(n - 1)] == "杀手") {
                     $("#text").text("词组:" + STxt);
                 }
@@ -33,19 +38,19 @@ $(document).ready(function () {
                 n++;
             }
             else {
-                $("#front").css({ "visibility": "hidden" });
-                $("#contary").css({ "visibility": "visible" });
-                $(".number").text(n);
-                $("#next").text("查看" + c + "号身份");
+                a.css({ "visibility": "hidden" });
+                b.css({ "visibility": "visible" });
+                d.text(n);
+                e.text("查看" + c + "号身份");
                 i++;
                 c++;
             }
         }
         else if (i == identity.length * 2 - 2 ) {
-            $("#front").css({ "visibility": "visible" });
-            $("#contary").css({ "visibility": "hidden" });
-            $(".number").text(n);
-            $("#next").text("法官页面");
+            a.css({ "visibility": "visible" });
+            b.css({ "visibility": "hidden" });
+            d.text(n);
+            e.text("法官页面");
             i++;
         }
         else (

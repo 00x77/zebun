@@ -8,13 +8,15 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link rel="stylesheet" href="../css/new.css">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="../js/setting.js"></script>
 </head>
 
 <body class="bgc-f0">
 
     <header>
         <div class="nav-bar">
-            <a type="button" onclick="back()" class="u1-5"></a>
+            <a type="button" id="back" class="u1-5"></a>
             <p class="ft-17 ls-01">参数设置</p>
             <a class="u1-3 rel l-04"></a>
         </div>
@@ -56,26 +58,25 @@
         <div class="rel w-340 center-block bgc-white pt-10 pr-15 pl-15 pb-30">
             <p class="ft-14 lh-20 ls-01">玩家人数&nbsp;&nbsp;&nbsp;
                 <span class="dis-ib vertical-middle h-20">
-                    <input type="text" id="p-num" onchange="numChange()" onkeyup="value=value.replace(/[^\d]/g,'')"
+                    <input type="text" id="p-num" onkeyup="value=value.replace(/[^\d]/g,'')"
                         onblur="value=value.replace(/[^\d]/g,'')" class="w-30 h-20 ft-17 bgc-f4 c-fa pl-05" value="4"
                         maxlength="2">
-                    </span>&nbsp;&nbsp;&nbsp;人
-                
+                </span>&nbsp;&nbsp;&nbsp;人
+
             </p>
-            <button type="button" class="range-left" onclick="rangeLeft()"></button>
-            <input type="range" id="setting-range" oninput="getNumber()" class="setting-range mt-35" value="4" min="4"
-                max="18" step="1">
-            <button type="button" class="range-right" onclick="rangeRight()"></button>
+            <button type="button" id="rangeLeft" class="range-left"></button>
+            <input type="range" id="setting-range" class="setting-range mt-35" value="4" min="4" max="18" step="1">
+            <button type="button" id="rangeRight" class="range-right"></button>
         </div>
     </main>
 
     <footer class="pt-10 pb-10 bgc-f0">
-        <button type="button" class="dis-b w-340 center-block bgc-fa" onclick="go()">
+        <button type="button" id="go" class="dis-b w-340 center-block bgc-fa">
             <p class="ft-20 lh-45 ls-02 c-white">去发牌</p>
         </button>
     </footer>
 
-    <script src="../js/setting.js"></script>
+
 </body>
 
 </html>

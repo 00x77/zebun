@@ -23,6 +23,14 @@ $(document).ready(function () {
         $("#pop-ups").text("发言谈论结束，大家请投票。");
     }
 
+    if (sessionStorage.getItem("stepTime") != null) {
+        var aTime = sessionStorage.getItem("stepTime");
+        var stepTime = aTime.split(",");
+    }
+    else {
+        var stepTime = [];
+        stepTime[0] = parseInt(sessionStorage.getItem("startTime"));
+    }
     var heatmanNumber = parseInt(sessionStorage.getItem("heatmanNumber"));
     var civilianNumber = parseInt(sessionStorage.getItem("civilianNumber"));
     var a = sessionStorage.getItem("identity");
@@ -65,8 +73,9 @@ $(document).ready(function () {
                     alert("请选择正确的目标!");
                 }
                 else {
-                    $(".block-dropmenu").hide();
-                    $(".block-dropmenu").eq(i).toggle();
+                    let g = $(".block-dropmenu");
+                    g.hide();
+                    g.eq(i).toggle();
                 }
             });
 
@@ -85,8 +94,44 @@ $(document).ready(function () {
                     numberReduce(i);
                 }
                 sessionStorage.setItem("person", JSON.stringify(person));
-                window.location.href = "ben.html";
+                pan();
             })
         }(i);
+    }
+
+    function voteReturn() {
+        if (sessionStorage.getItem("vote-step") != null) {
+            var a = sessionStorage.getItem("day");
+            var day = a.split(",");
+            day.splice(1, 1);
+            sessionStorage.setItem("day", day);
+        }
+    }
+
+    function setTime() {
+        var a = new Date();
+        var time = a.getTime();
+        sessionStorage.setItem("endTime", time);
+        stepTime.push(time);
+        sessionStorage.setItem("stepTime", stepTime);
+        alert("游戏结束。");
+    }
+
+    function pan() {
+        if (parseInt(sessionStorage.getItem("civilianNumber")) < parseInt(sessionStorage.getItem("heatmanNumber"))) {
+            setTime();
+            voteReturn();
+            sessionStorage.setItem("heatmanWin", 0);
+            location.href = "result.html"
+        }
+        else if (sessionStorage.getItem("heatmanNumber") == 0) {
+            setTime();
+            voteReturn();
+            sessionStorage.setItem("civilianWin", 0);
+            location.href = "result.html"
+        }
+        else {
+            window.location.href = "ben.html";
+        }
     }
 });

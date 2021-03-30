@@ -10,29 +10,7 @@ $(document).ready(function () {
     }
     //当杀手人数为0或平民人数小于杀手人数时结束游戏
     //如果游戏没结束则检测是否第一次进入这个页面，并把天数记录下
-    if (parseInt(sessionStorage.getItem("civilianNumber")) < parseInt(sessionStorage.getItem("heatmanNumber"))) {
-        var a = new Date();
-        var time = a.getTime();
-        sessionStorage.setItem("endTime", time);
-        stepTime.push(time);
-        sessionStorage.setItem("stepTime", stepTime);
-        alert("游戏结束。")
-        voteReturn();
-        sessionStorage.setItem("heatmanWin", 0);
-        location.href = "result.html"
-    }
-    else if (sessionStorage.getItem("heatmanNumber") == 0) {
-        var a = new Date();
-        var time = a.getTime();
-        sessionStorage.setItem("endTime", time);
-        stepTime.push(time);
-        sessionStorage.setItem("stepTime", stepTime);
-        alert("游戏结束。")
-        voteReturn();
-        sessionStorage.setItem("civilianWin", 0);
-        location.href = "result.html"
-    }
-    else if (sessionStorage.getItem("day") != null) {
+    if (sessionStorage.getItem("day") != null) {
         var z = sessionStorage.getItem("day");
         var day = new Array;
         day = z.split(",");
@@ -57,15 +35,6 @@ $(document).ready(function () {
         var beVote = sessionStorage.getItem("beVote").split(",");
     }
     var identity = sessionStorage.getItem("identity").split(",");
-
-    function voteReturn() {
-        if (sessionStorage.getItem("vote-step") != null) {
-            var a = sessionStorage.getItem("day");
-            var day = a.split(",");
-            day.splice(1, 1);
-            sessionStorage.setItem("day", day);
-        }
-    }
     //将阿拉伯数字转为汉字，用于显示第几天
     function convertToChinese(num) {
         var str = num.toString();
@@ -107,8 +76,6 @@ $(document).ready(function () {
         }
     }
 
-
-
     if (day.length > 1) {
         for (let i = 0, len = day.length - 1; i < len; i++) {
             $(".dayBody").eq(i).hide();
@@ -119,7 +86,6 @@ $(document).ready(function () {
             })
         }
     }
-
 
     //根据进行到第几步并给按钮上色
     if (sessionStorage.getItem("step") != null) {
@@ -133,11 +99,12 @@ $(document).ready(function () {
 
     function disable() {
         var p = x.length;
+        let q = $(".step");
         for (var i = 0; i < x.length; i++) {
-            $(".step").eq(i).css("background-color", "#92b7a5");
-            $(".step").eq(i).addClass("step-chance");
+            q.eq(i).css("background-color", "#92b7a5");
+            q.eq(i).addClass("step-chance");
         }
-        $(".step").eq(p).attr("disabled", false);
+        q.eq(p).attr("disabled", false);
     }
     disable();
 
